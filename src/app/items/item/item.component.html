@@ -1,1 +1,13 @@
-<p>item works!</p>
+<div>
+    <img src={{item.image}} class="card-img-top" alt={{item.name}}>
+    <div class="card-body">
+        <hr>
+        <h5 class="card-title">{{item.name}}</h5>
+        <hr>
+        <p class="card-text">{{item.description}}</p>
+        <hr>
+        <p class="card-text {{item.inStock?'text-success':'text-danger'}}">This item is {{item.inStock?'':'not'}} in stock</p>
+        <p class="card-text {{item.isBargainAble?'text-success':'text-warning'}}">This item is {{item.isBargainAble?'':'not'}} bargain able</p>
+        <button class="btn btn-primary float-end" [disabled]="!item.inStock">Order</button>
+    </div>
+</div>

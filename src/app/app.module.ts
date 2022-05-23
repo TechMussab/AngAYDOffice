@@ -9,7 +9,9 @@ import { ProfileComponent } from './user/profile/profile.component';
 import { ItemsComponent } from './items/items.component';
 import { ItemComponent } from './items/item/item.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import {HttpClientModule} from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,12 +19,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     UserComponent,
     ProfileComponent,
     ItemsComponent,
-    ItemComponent
+    ItemComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
