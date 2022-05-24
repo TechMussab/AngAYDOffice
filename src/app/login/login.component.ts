@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CallApiService } from '../call-api.service';
 import {Router} from '@angular/router'
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   error: string = ""
   isLoading: boolean = false
 
-  constructor(private apiService: CallApiService,private _router: Router) {
+  constructor(private authService: AuthService,private _router: Router) {
   }
 
   ngOnInit(): void {
@@ -25,7 +26,7 @@ export class LoginComponent implements OnInit {
   loginUser() {
     console.log('login function works: ' + this.loginUserData.email);
     this.isLoading = true
-    this.apiService.postData('mobileLogin',
+    this.authService.loginUser(
       this.loginUserData
     ).subscribe(
       response => {
@@ -39,7 +40,7 @@ export class LoginComponent implements OnInit {
         this.error=error.error.message
       }
     )
-    
+
 
   }
 
