@@ -31,16 +31,25 @@ export class LoginComponent implements OnInit {
     ).subscribe(
       response => {
         console.log(response)
-        this._router.navigate([''])
+        this.data= (<any>response)
+        // console.log(this.data[''])
+        // this.data
+        // this.authService.token=response
+        // this._router.navigate(['']).then(r => console.log('redirected'))
       },
       error => {
         console.log('error: ' + error.error.message)
         this.data = error
         this.isLoading = false
+        // this.data=error.error
         this.error=error.error.message
+      },
+      ()=>
+      {
+        // console.log()
+        this.isLoading=false
       }
     )
-    this.authService.isAuthenticated=true
   }
 
 }

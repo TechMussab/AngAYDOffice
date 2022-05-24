@@ -1,4 +1,6 @@
 {{authService.isAuthenticated}}
+<br>
+{{data|json}}
 <div *ngIf="isLoading else loaded">
     <div style="text-align: -webkit-center; margin-top: 50vh;">
         <mat-spinner></mat-spinner>
