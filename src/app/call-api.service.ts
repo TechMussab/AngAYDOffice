@@ -19,4 +19,22 @@ export class CallApiService {
        )
      )
    }
+
+   postData(apiUrl: string,data:{})
+   {
+    //  const token = localStorage.getItem('token');
+    //  if(!token)
+    //  {
+    //    return false;
+    //  }
+     return this.http.post(this.Site+apiUrl,data).pipe(
+       catchError(
+         (error)=>
+         {
+           console.log(error)
+           return throwError(error)
+         }
+       )
+     )
+   }
 }
