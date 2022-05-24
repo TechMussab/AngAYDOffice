@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
     email: '',
     password: ''
   }
-  data = {}
+  data:any|{}
   error: string = ""
   isLoading: boolean = false
 
@@ -31,11 +31,13 @@ export class LoginComponent implements OnInit {
     ).subscribe(
       response => {
         console.log(response)
-        this.data= (<any>response)
-        // console.log(this.data[''])
-        // this.data
-        // this.authService.token=response
-        // this._router.navigate(['']).then(r => console.log('redirected'))
+        console.log('loginData: '+ this.loginUserData)
+        this.data= response
+        console.log(this.data["success"])
+        this.authService.token=this.data["token"]
+        this.authService.user=this.data["user"]
+        this.authService.isAuthenticated=true
+        this._router.navigate(['']).then(r => console.log('redirected'))
       },
       error => {
         console.log('error: ' + error.error.message)

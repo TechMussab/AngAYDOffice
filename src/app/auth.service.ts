@@ -7,11 +7,11 @@ import {CallApiService} from "./call-api.service";
 export class AuthService {
   private _isAuthenticated:boolean;
   private _token:string|null;
-  private _user:{}|null|string;
+  private _user:{}|string;
   constructor(private apiService:CallApiService) {
     this._token=localStorage.getItem('token');
     this._isAuthenticated=!!this._token
-    this._user=localStorage.getItem('user')
+    this._user=JSON.parse(localStorage.getItem('user')!!)
   }
   get isAuthenticated()
   {
@@ -26,14 +26,16 @@ export class AuthService {
   set token(token:string |null)
   {
     this._token=token;
+    localStorage.setItem('token',this._token!!.toString())
   }
   get user()
   {
     return this._user;
   }
-  set user(user:{}|null)
+  set user(user:{}|any)
   {
     this._user=user;
+    localStorage.setItem('user',JSON.stringify(this._user!!))
   }
   private _loginURL:string='mobileLogin'
   loginUser(data:{}) {

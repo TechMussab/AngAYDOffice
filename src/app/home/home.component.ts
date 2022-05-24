@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   data: any = {};
   isLoading: Boolean = true;
   services = <any>{};
-  constructor(public autService:AuthService,private apiService: CallApiService) { }
+  constructor(public authService:AuthService,private apiService: CallApiService) { }
   delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
