@@ -3,31 +3,25 @@
   <div class="container-fluid">
     <a class="navbar-brand text-light" routerLink="">{{title}}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link text-light" aria-current="page" routerLink="" [routerLinkActive]="['text-warning']">Home</a>
+          <a class="nav-link text-light" aria-current="page" routerLink=""
+             [routerLinkActive]="['text-warning']">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-light" routerLink="userProfile" [routerLinkActive]="['text-warning']">Profile</a>
         </li>
-       
+
       </ul>
-       <div class="d-flex me-2">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link text-light" routerLink="register/" [routerLinkActive]="['text-warning']">Register</a>
-
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-light" routerLink="login/" [routerLinkActive]="['text-warning']">Login</a>
-
-            </li>
-          </ul>
+      <div *ngIf="auth.isAuthenticated  else notAuthenticated">
+        <div>
+          <p class="text-light"> User isAuthenticated</p>>
         </div>
+      </div>
       <!-- <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
@@ -36,6 +30,27 @@
   </div>
 </nav>
 <div class="container">
-<router-outlet></router-outlet>
+
+  <router-outlet></router-outlet>
 
 </div>
+
+<ng-template #notAuthenticated>
+  <div class="d-flex me-2">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link text-light" routerLink="register/" [routerLinkActive]="['text-warning']">Register</a>
+
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light" routerLink="login/" [routerLinkActive]="['text-warning']">Login</a>
+
+      </li>
+    </ul>
+  </div>
+</ng-template>
+<ng-template #isAuthenticated>
+  <div>
+    <p> User isAuthenticated</p>>
+  </div>
+</ng-template>
