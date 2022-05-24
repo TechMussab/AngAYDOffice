@@ -7,6 +7,7 @@ import {CallApiService} from "./call-api.service";
 export class AuthService {
   private _isAuthenticated:boolean;
   private _token:string|null;
+
   private _user:{}|string;
   constructor(private apiService:CallApiService) {
     this._token=localStorage.getItem('token');
