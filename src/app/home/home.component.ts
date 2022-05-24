@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 import { CallApiService } from '../call-api.service';
 
 
@@ -11,7 +12,7 @@ export class HomeComponent implements OnInit {
   data: any = {};
   isLoading: Boolean = true;
   services = <any>{};
-  constructor(private apiService: CallApiService) { }
+  constructor(public autService:AuthService,private apiService: CallApiService) { }
   delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }

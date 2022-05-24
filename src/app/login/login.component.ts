@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   error: string = ""
   isLoading: boolean = false
 
-  constructor(private authService: AuthService,private _router: Router) {
+  constructor(public authService: AuthService,private _router: Router) {
   }
 
   ngOnInit(): void {
@@ -40,8 +40,7 @@ export class LoginComponent implements OnInit {
         this.error=error.error.message
       }
     )
-
-
+    this.authService.isAuthenticated=true
   }
 
 }
