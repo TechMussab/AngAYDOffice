@@ -12,6 +12,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { EventsComponent } from './events/events.component';
+import { SpecialEventsComponent } from './special-events/special-events.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +24,10 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ProfileComponent,
     ItemsComponent,
     ItemComponent,
+    RegisterComponent,
+    LoginComponent,
+    EventsComponent,
+    SpecialEventsComponent,
   ],
   imports: [
     BrowserModule,
