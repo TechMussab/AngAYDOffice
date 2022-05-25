@@ -17,6 +17,8 @@ import { EventsComponent } from './events/events.component';
 import { SpecialEventsComponent } from './special-events/special-events.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {FormsModule} from '@angular/forms'
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth.guard';
 // import {ReactiveFormsModule} from '@angular/forms'
 @NgModule({
   declarations: [
@@ -41,7 +43,7 @@ import {FormsModule} from '@angular/forms'
     MatProgressSpinnerModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
