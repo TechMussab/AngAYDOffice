@@ -10,4 +10,12 @@ export class AppComponent {
   title = 'AYD';
   constructor(public auth:AuthService) {
   }
+
+
+
+
+  logout()
+  {
+    console.log('in log out')
+  }
 }

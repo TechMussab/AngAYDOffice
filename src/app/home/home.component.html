@@ -1,6 +1,6 @@
 <p>isAuth: {{authService.isAuthenticated}}</p>
 <p>isAuthToken: {{authService.token}}</p>
-<p>isAuthUser: {{authService.user["fName"]!!|uppercase}}</p>
+<p>isAuthUser: {{authService.user["fName"]!|uppercase}}</p>
 
 <div *ngIf="isLoading else loaded">
     <div style="text-align: -webkit-center; margin-top: 50vh;">

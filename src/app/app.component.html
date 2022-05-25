@@ -18,8 +18,19 @@
 
       </ul>
       <div *ngIf="auth.isAuthenticated  else notAuthenticated">
-        <div>
+        <!-- <div>
           <p class="text-light"> User isAuthenticated</p>>
+        </div> -->
+        <div class="nav-item dropdown ">
+          <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{auth.user["fName"]+' '+auth.user["lName"]}}
+          </a>
+          <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item text-light" href="userProfile">Profile</a></li>
+            <!-- <li><a class="dropdown-item" href="#">Another action</a></li> -->
+            <li><hr class="dropdown-divider"></li>
+            <li><button class=" btn btn-primary dropdown-item text-light" (onclick)="logout()">Log out</button></li>
+          </ul>
         </div>
       </div>
       <!-- <form class="d-flex" role="search">
