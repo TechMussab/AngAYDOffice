@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { CallApiService } from '../call-api.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+
 import {Router} from '@angular/router'
 import {AuthService} from "../auth.service";
+
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-login',
@@ -10,14 +12,22 @@ import {AuthService} from "../auth.service";
 })
 export class LoginComponent implements OnInit {
 
-  loginUserData = {
-    email: '',
-    password: ''
+  loginUserData = new FormGroup(
+    {
+      email: new FormControl('',[Validators.required,Validators.email]),
+      password: new FormControl('',[Validators.required])
+    }
+  )
+  get email()
+  {return this.loginUserData.get('email')}
+  get password()
+  {
+    return this.loginUserData.get('password')
   }
   data:any|{}={}
   error: string = ""
   isLoading: boolean = false
-   
+  loginService:any
   constructor(public authService: AuthService,private _router: Router) {
   }
 
@@ -28,10 +38,12 @@ export class LoginComponent implements OnInit {
     }
   }
   loginUser() {
-      console.log('login function works: ' + this.loginUserData.email);
+    console.log(this.loginUserData.value)
+    // return false;
+      // console.log('login function works: ' + this.loginUserData.email);
       this.isLoading = true
-      this.authService.loginUser(
-        this.loginUserData
+      this.loginService=this.authService.loginUser(
+        this.loginUserData.value
       ).subscribe(
         response => {
           console.log(response)
@@ -58,6 +70,10 @@ export class LoginComponent implements OnInit {
       )
     }
 
+  ngOnDestroy()
+  {
+    this.loginService.unsubscribe
+  }
 }
 
 

@@ -41,27 +41,26 @@ export class AuthService {
     this._user=user;
     localStorage.setItem('user',JSON.stringify(this._user!!))
   }
-  
+
   loginUser(data:{}) {
     // return this.apiService.postData(this._loginURL, data)
     return this.apiService.postData(this._loginURL, data)
   }
-  loginUserService(payLoad:{}|any)
-  {
-    return this.apiService.postData(this._loginURL, payLoad)
-  }
-  loginUserWithService(payLoad:{}|any):{}|any
-  {
-    let responseData:{}|any={};
-    let responseError:string|any='';
-    const resp=this.loginUserService(payLoad)
-    resp.pipe(responseData,catchError(responseError))
-    console.log('response from func using pipe: '+responseData)
-    console.log('error from func using pipe: '+responseError)
-    return {data:responseData,error:responseError}
-  }
 
+
+
+
+  logOutUser()
+  {
+
+  }
 }
+
+
+
+
+
+
 
 
 // const subscribedService=this.loginUserService(

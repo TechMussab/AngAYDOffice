@@ -19,7 +19,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import {FormsModule} from '@angular/forms'
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
-// import {ReactiveFormsModule} from '@angular/forms'
+import {ReactiveFormsModule} from '@angular/forms'
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +41,8 @@ import { AuthGuard } from './auth.guard';
     HttpClientModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [AuthService,AuthGuard],
   bootstrap: [AppComponent]

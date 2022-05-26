@@ -1,9 +1,9 @@
-<p>isAuth: {{authService.isAuthenticated}}</p>
-<p>isAuthToken: {{authService.token}}</p>
-<p>isAuthUser: {{authService.user|json}}</p>
-<p>error: {{error|json}}</p>
-<br>
-{{data |json}}
+<!--<p>isAuth: {{authService.isAuthenticated}}</p>-->
+<!--<p>isAuthToken: {{authService.token}}</p>-->
+<!--<p>isAuthUser: {{authService.user|json}}</p>-->
+<!--<p>error: {{error|json}}</p>-->
+<!--<br>-->
+<!--{{data |json}}-->
 <div *ngIf="isLoading else loaded">
     <div style="text-align: -webkit-center; margin-top: 50vh;">
         <mat-spinner></mat-spinner>
@@ -19,23 +19,55 @@
                         <h3 class="mb-0">Login</h3>
                     </div>
                     <div class="card-body">
-                        <form class="form">
-                            <div class="form-group">
-                                <label for="uname1">Username</label>
-                                <input type="text" class="form-control rounded-0" [(ngModel)]="loginUserData.email"
-                                    name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input type="password" class="form-control rounded-0"
-                                    [(ngModel)]="loginUserData.password" name="password" required>
-                            </div>
-                            <div class="text-danger">
-                                {{error}}
-                                </div>
-                            <button type="button" (click)="loginUser()"
-                                class="btn btn-primary float-end mt-2">Login</button>
-                        </form>
+
+                      <form (ngSubmit)="loginUser()" [formGroup]="loginUserData">
+                        <div class="mb-3">
+                          <label for="email" class="form-label">Email address</label>
+                          <input type="email" class="form-control  {{email?.invalid&& email?.touched?'border border-danger':''}}" id="email" aria-describedby="emailHelp" formControlName="email">
+                          <span *ngIf="email?.invalid && email?.touched">
+                            <div class="text-danger">please enter valid email</div>
+                          </span>
+                        </div>
+                        <div class="mb-3">
+                          <label for="password" class="form-label">Password</label>
+                          <input type="password" class="form-control {{password?.invalid&& email?.touched?'border border-danger':''}}" id="password"
+                                 formControlName="password"
+                          >
+                          <span *ngIf="password?.invalid && password?.touched">
+                            <div class="text-danger">password is required</div>
+                          </span>
+                        </div>
+<!--                        <div class="mb-3 form-check">-->
+<!--                          <input type="checkbox" class="form-check-input" id="exampleCheck1">-->
+<!--                          <label class="form-check-label" for="exampleCheck1">Check me out</label>-->
+<!--                        </div>-->
+                        <button type="submit" class="btn btn-primary float-end">Log in</button>
+                      </form>
+<!--                        <form class="form" (ngSubmit)="loginUser()" [formGroup]="loginUserData">-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="email">Email</label>-->
+<!--                                <input  type="email" class="form-control rounded-0" formControlName="email"-->
+<!--                                    name="email" id="email" required>-->
+<!--                              <span>-->
+<!--                                <p>-->
+<!--                                  {{email?.touched}}-->
+<!--&lt;!&ndash;                                  {{email.}}&ndash;&gt;-->
+<!--                                </p>-->
+
+<!--                              </span>-->
+<!--                            </div>-->
+<!--                            <div class="form-group">-->
+<!--                                <label>Password</label>-->
+<!--                                <input type="password" class="form-control rounded-0"-->
+<!--                                       formControlName="password"-->
+<!--                                       name="password" required>-->
+<!--                            </div>-->
+<!--                            <div class="text-danger">-->
+<!--                                {{error}}-->
+<!--                                </div>-->
+<!--                            <button type="submit"-->
+<!--                                class="btn btn-primary float-end mt-2">Login</button>-->
+<!--                        </form>-->
                     </div>
                     <!--/card-block-->
                 </div>
